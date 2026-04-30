@@ -91,4 +91,4 @@ TP3-stock-multirubro/
 
 ---
 
-*&copy; 2024 — Comercio Multirubro "El Almacén"*
+*&copy; 2026 — Comercio Multirubro "El Almacén de 6°G"*
