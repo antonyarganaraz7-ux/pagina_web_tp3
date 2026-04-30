@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos - Gestión de Stock</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <img src="logo.svg" alt="Logo Comercio Multirubro" title="Comercio Multirubro - Kiosco, Librería y Regalería" class="logo" style="height: 64px; margin-right: 16px;">
+            <div>
+            <h1>Comercio Multirubro "El Almacén de 6°G"</h1>
+                <p class="subtitulo-header">Kiosco · Librería · Regalería</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <!-- Página activa marcada visualmente -->
+                <li><a href="gestion.html" class="activo">Gestión</a></li>
+                <li><a href="ventas.html">Ventas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Migas de pan: ubica al usuario dentro del sitio -->
+        <nav class="breadcrumbs" aria-label="Ruta de navegación">
+            <p>Inicio &gt; <strong>Gestión de Productos</strong></p>
+        </nav>
+
+        <!-- Sección: Agregar nuevo producto -->
+        <section id="gestion-productos">
+            <h2>Agregar / Editar Producto</h2>
+            <p>Completá los campos para registrar un nuevo producto o actualizar uno existente en el inventario.</p>
+
+            <!-- Formulario con todos los campos requeridos -->
+            <form class="formulario-estilizado">
+
+                <div class="form-grid">
+
+                    <div class="campo">
+                        <label for="nombre">Nombre del Producto:</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ej: Cuaderno Rivadavia A4"
+                               title="Ingrese el nombre completo del producto" alt="Campo nombre del producto">
+                    </div>
+
+                    <div class="campo">
+                        <label for="rubro">Rubro:</label>
+                        <select id="rubro" name="rubro" title="Seleccioná el rubro al que pertenece el producto">
+                            <option value="">-- Seleccioná un rubro --</option>
+                            <option value="libreria">Librería</option>
+                            <option value="kiosco">Kiosco</option>
+                            <option value="regaleria">Regalería</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="precio">Precio ($):</label>
+                        <!-- Atributo title y min para validación visual -->
+                        <input type="number" id="precio" name="precio" min="0" step="0.01"
+                               placeholder="Ej: 1500.00" title="Ingrese el precio en pesos argentinos">
+                    </div>
+
+                    <div class="campo">
+                        <label for="stock">Stock Inicial:</label>
+                        <input type="number" id="stock" name="stock" min="0"
+                               placeholder="Ej: 25" title="Cantidad de unidades disponibles en stock">
+                    </div>
+
+                    <!-- Campo adicional: Proveedor -->
+                    <div class="campo">
+                        <label for="proveedor">Proveedor:</label>
+                        <input type="text" id="proveedor" name="proveedor"
+                               placeholder="Ej: Distribuidora Norte" title="Nombre del proveedor del producto">
+                    </div>
+
+                    <!-- Campo adicional: Código de producto -->
+                    <div class="campo">
+                        <label for="codigo">Código Interno:</label>
+                        <input type="text" id="codigo" name="codigo"
+                               placeholder="Ej: LIB-001" title="Código único identificador del producto">
+                    </div>
+
+                </div>
+
+                <!-- Botones de acción con hover y title descriptivos -->
+                <div class="botones-form">
+                    <button type="button" title="Guardar el producto en el inventario" class="btn-guardar">
+                        ✔ Guardar Producto
+                    </button>
+                    <button type="reset" title="Limpiar todos los campos del formulario" class="btn-limpiar">
+                        ✖ Limpiar Campos
+                    </button>
+                </div>
+
+            </form>
+        </section>
+
+        <hr>
+
+        <!-- Tabla de productos actuales en inventario -->
+        <section>
+            <h2>Inventario Actual</h2>
+            <p>Listado de productos cargados en el sistema.</p>
+            <table class="tabla-stock">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Rubro</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>KIO-001</td>
+                        <td>Alfajor Triple</td>
+                        <td>Kiosco</td>
+                        <td>$1.200</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>LIB-001</td>
+                        <td>Cuaderno A4 Tapa Dura</td>
+                        <td>Librería</td>
+                        <td>$2.500</td>
+                        <td class="alerta">2</td>
+                    </tr>
+                    <tr>
+                        <td>REG-001</td>
+                        <td>Taza Personalizada</td>
+                        <td>Regalería</td>
+                        <td>$5.500</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>KIO-002</td>
+                        <td>Gaseosa 500ml</td>
+                        <td>Kiosco</td>
+                        <td>$1.800</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>LIB-002</td>
+                        <td>Lapicera Azul BIC</td>
+                        <td>Librería</td>
+                        <td>$500</td>
+                        <td>80</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Comercio Multirubro "6°G" — <a href="mailto:soporte@comercio.com">Soporte Técnico</a></p>
+    </footer>
+
+</body>
+</html>

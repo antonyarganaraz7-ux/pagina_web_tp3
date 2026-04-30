@@ -1,0 +1,515 @@
+/* =====================================================
+   estilos.css — Sistema de Gestión de Stock
+   Comercio Multirubro "El Almacén"
+   ===================================================== */
+
+/* --- Variables de color para consistencia global --- */
+:root {
+    --color-primario: #2c3e50;           /* Azul oscuro — identidad del comercio */
+    --color-acento: #3498db;             /* Azul claro — interacciones y destacados */
+    --color-exito: #27ae60;              /* Verde — acciones positivas */
+    --color-alerta: #c0392b;             /* Rojo — stock bajo o urgente */
+    --color-fondo: #f5f6fa;             /* Gris muy suave — fondo general */
+    --color-texto: #2d3436;             /* Casi negro — legibilidad máxima */
+    --color-borde: #dfe6e9;             /* Gris claro — bordes sutiles */
+
+    /* Colores en formatos requeridos */
+    --color-header-rgb: rgb(44, 62, 80);           /* RGB: mismo que primario */
+    --color-seccion-hsl: hsl(210, 29%, 24%);       /* HSL: mismo que primario */
+    --color-formulario-rgba: rgba(44, 62, 80, 0.06); /* RGBA con transparencia */
+}
+
+/* =====================================================
+   RESET Y BASE
+   ===================================================== */
+
+/* Reset básico para comportamiento consistente entre navegadores */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Tipografía elegante y legible — fuentes de Google no requeridas, usamos stack web-safe refinado */
+    font-family: Georgia, 'Times New Roman', serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* =====================================================
+   HEADER Y NAVEGACIÓN
+   Zona superior — siempre visible y reconocible
+   ===================================================== */
+
+header {
+    /* Color de fondo en hexadecimal */
+    background-color: var(--color-primario);
+    color: white;
+    padding: 20px 40px 0;
+    text-align: center;
+    /* Sombra sutil para separar header del contenido */
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Contenedor interior del header — usa flexbox para alinear logo y título */
+.header-inner {
+    display: flex;              /* Flexbox: logo a la izquierda, texto a la derecha */
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;            /* Se adapta a pantallas pequeñas */
+}
+
+/* Logo del comercio */
+.logo {
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.12); /* Fondo semitransparente para contraste */
+    padding: 4px;
+}
+
+h1 {
+    /* Jerarquía visual clara: título principal grande */
+    font-size: 1.8rem;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+/* Subtítulo de rubros en el header */
+.subtitulo-header {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 2px;
+    font-style: italic;
+    margin-top: 4px;
+}
+
+/* Barra de navegación */
+nav ul {
+    list-style: none;           /* Sin viñetas en la lista del menú */
+    padding: 0;
+    margin-top: 12px;
+    display: flex;              /* Flexbox: ítems del menú en fila */
+    justify-content: center;
+    gap: 8px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: Arial, sans-serif;  /* Sans-serif para navegación — mayor claridad */
+    font-size: 0.95rem;
+    padding: 10px 20px;
+    display: inline-block;
+    transition: color 0.25s, background-color 0.25s; /* Transición suave en hover */
+    border-radius: 4px 4px 0 0;
+}
+
+/* Hover en enlaces de navegación: feedback visual inmediato */
+nav a:hover {
+    color: white;
+    background-color: rgba(52, 152, 219, 0.35);  /* RGBA — acento semitransparente */
+    text-decoration: underline;
+}
+
+/* Elemento activo: indica en qué página está el usuario */
+nav a.activo {
+    border-bottom: 3px solid var(--color-acento);
+    color: white;
+    background-color: rgba(52, 152, 219, 0.2);
+    padding-bottom: 7px;
+}
+
+/* =====================================================
+   CONTENIDO PRINCIPAL
+   ===================================================== */
+
+main {
+    max-width: 960px;
+    margin: 40px auto;      /* Margen superior e inferior para respiro visual */
+    padding: 32px 40px;
+    background-color: white;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    /* Sombra leve para elevar el contenido del fondo */
+    box-shadow: 0 2px 16px rgba(44, 62, 80, 0.08);
+}
+
+h2 {
+    /* Jerarquía secundaria — distingue secciones */
+    color: var(--color-primario);
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--color-borde);
+}
+
+section {
+    margin-bottom: 40px;    /* Espaciado entre secciones para evitar saturación */
+}
+
+p {
+    margin-bottom: 12px;
+}
+
+hr {
+    border: none;
+    border-top: 1px dashed var(--color-borde);
+    margin: 32px 0;
+}
+
+/* =====================================================
+   TARJETAS DE RUBROS — CSS GRID
+   Organiza los tres rubros en columnas iguales
+   ===================================================== */
+
+.rubros-grid {
+    display: grid;                              /* CSS Grid para distribución de columnas */
+    grid-template-columns: repeat(3, 1fr);      /* 3 columnas iguales */
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.rubro-card {
+    /* Tarjeta individual de cada rubro */
+    background-color: var(--color-formulario-rgba); /* RGBA con transparencia solicitada */
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    padding: 24px 16px;
+    text-align: center;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+/* Hover en tarjetas — efecto de elevación */
+.rubro-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(44, 62, 80, 0.14);
+}
+
+.rubro-card h3 {
+    margin: 12px 0 6px;
+    color: var(--color-primario);
+}
+
+.rubro-card p {
+    font-size: 0.9rem;
+    color: #636e72;
+    margin: 0;
+}
+
+/* Grid adaptable a pantallas medianas */
+@media (max-width: 640px) {
+    .rubros-grid {
+        grid-template-columns: 1fr;  /* Una columna en móvil */
+    }
+}
+
+/* =====================================================
+   ACCESOS RÁPIDOS — FLEXBOX
+   ===================================================== */
+
+.accesos-flex {
+    display: flex;              /* Flexbox: botones en fila con espacio entre ellos */
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+/* Botones de acceso rápido (enlaces con apariencia de botón) */
+.btn-acceso {
+    background-color: var(--color-primario);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: background-color 0.25s, transform 0.15s;
+    display: inline-block;
+}
+
+/* Hover en botones de acceso — feedback visual claro */
+.btn-acceso:hover {
+    background-color: var(--color-acento);  /* Cambia a azul acento */
+    transform: scale(1.03);
+    text-decoration: none;
+}
+
+/* =====================================================
+   TABLAS DE STOCK
+   Claridad visual para datos tabulares
+   ===================================================== */
+
+.tabla-stock {
+    width: 100%;
+    border-collapse: collapse;   /* Elimina doble borde entre celdas */
+    margin-top: 12px;
+    font-size: 0.95rem;
+}
+
+.tabla-stock th,
+.tabla-stock td {
+    border: 1px solid var(--color-borde);
+    padding: 11px 14px;
+    text-align: left;
+}
+
+/* Encabezados de tabla — diferenciados visualmente */
+.tabla-stock th {
+    background-color: hsl(210, 29%, 24%);  /* HSL requerido: igual que primario */
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+/* Filas alternas para legibilidad en tablas largas */
+.tabla-stock tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Hover en filas de tabla */
+.tabla-stock tbody tr:hover {
+    background-color: rgba(52, 152, 219, 0.08);
+}
+
+/* Clase de alerta: stock bajo, resaltado en rojo */
+.alerta {
+    color: var(--color-alerta);
+    font-weight: bold;
+}
+
+/* =====================================================
+   FORMULARIO DE GESTIÓN
+   ===================================================== */
+
+.formulario-estilizado {
+    background-color: var(--color-formulario-rgba); /* RGBA — transparencia solicitada */
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    padding: 28px;
+    margin-top: 16px;
+}
+
+/* Grid de dos columnas para los campos del formulario */
+.form-grid {
+    display: grid;                          /* CSS Grid para organizar campos */
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas iguales */
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+/* Etiqueta de cada campo */
+.campo label {
+    display: block;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    color: var(--color-primario);
+}
+
+/* Inputs y selects del formulario */
+.campo input,
+.campo select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #b2bec3;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: white;
+}
+
+/* Focus en inputs — resaltado visual de campo activo */
+.campo input:focus,
+.campo select:focus {
+    outline: none;
+    border-color: var(--color-acento);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* Contenedor de botones del formulario — flexbox */
+.botones-form {
+    display: flex;      /* Flexbox: botones en fila */
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Botón guardar — acción principal */
+.btn-guardar {
+    background-color: var(--color-exito);   /* Verde: acción positiva */
+    color: white;
+    padding: 11px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.95rem;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.25s, transform 0.15s;
+}
+
+/* Hover en botón guardar — feedback visual obligatorio */
+.btn-guardar:hover {
+    background-color: #2ecc71;  /* Verde más brillante al pasar el mouse */
+    transform: scale(1.03);
+}
+
+/* Botón limpiar — acción secundaria */
+.btn-limpiar {
+    background-color: #95a5a6;  /* Gris neutro: acción secundaria */
+    color: white;
+    padding: 11px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.95rem;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.25s;
+}
+
+/* Hover en botón limpiar */
+.btn-limpiar:hover {
+    background-color: #7f8c8d;
+}
+
+/* =====================================================
+   BREADCRUMBS
+   Muestra al usuario su posición en el sitio
+   ===================================================== */
+
+.breadcrumbs {
+    background: #f8f9fa;
+    padding: 10px 16px;
+    font-size: 0.88rem;
+    margin-bottom: 28px;
+    border-left: 5px solid var(--color-acento);  /* Borde izquierdo acento */
+    border-radius: 0 4px 4px 0;
+    font-family: Arial, sans-serif;
+    color: #636e72;
+}
+
+.breadcrumbs strong {
+    color: var(--color-primario);
+}
+
+/* =====================================================
+   SECCIÓN RESUMEN DE VENTAS — FLEXBOX
+   ===================================================== */
+
+.stats-flex {
+    display: flex;          /* Flexbox: tarjetas de stats en fila */
+    gap: 16px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+/* Tarjeta de estadística individual */
+.stat-card {
+    flex: 1;                /* Ocupan espacio igualitario */
+    min-width: 160px;
+    background-color: rgb(44, 62, 80);  /* RGB requerido: color primario */
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Tarjeta de alerta (pagos pendientes) */
+.alerta-card {
+    background-color: var(--color-alerta);  /* Rojo para urgencia */
+}
+
+/* Número grande en tarjeta de stat */
+.stat-numero {
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+/* Etiqueta descriptiva en tarjeta de stat */
+.stat-label {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    font-family: Arial, sans-serif;
+}
+
+/* =====================================================
+   LISTA DE PAGOS A CUENTA
+   ===================================================== */
+
+.lista-ficticia {
+    list-style: none;
+    padding: 0;
+    margin-top: 12px;
+}
+
+/* Item individual de la lista */
+.lista-ficticia li {
+    display: flex;              /* Flexbox: nombre, deuda y vencimiento en fila */
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 14px 12px;
+    border-bottom: 1px dashed var(--color-borde);
+    transition: background-color 0.2s;
+}
+
+/* Hover en item de lista */
+.lista-ficticia li:hover {
+    background-color: rgba(52, 152, 219, 0.06);
+}
+
+/* Monto de deuda — en rojo */
+.deuda {
+    color: var(--color-alerta);
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+/* Fecha de vencimiento */
+.vencimiento {
+    color: #636e72;
+    font-size: 0.88rem;
+    font-family: Arial, sans-serif;
+    margin-left: auto;   /* Empuja la fecha al extremo derecho */
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+    background-color: var(--color-primario);
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    padding: 18px;
+    font-size: 0.88rem;
+    font-family: Arial, sans-serif;
+    margin-top: 0;
+}
+
+footer a {
+    color: var(--color-acento);
+    text-decoration: none;
+}
+
+/* Hover en enlace del footer */
+footer a:hover {
+    text-decoration: underline;
+    color: #5dade2;
+}

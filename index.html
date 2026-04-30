@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Gestión de Stock | 6°G</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <!-- Encabezado principal con nombre del comercio y navegación -->
+    <header>
+        <div class="header-inner">
+            <!-- Logo del comercio usando imagen SVG local -->
+            <img src="logo.svg" alt="Logo Comercio Multirubro" title="Comercio Multirubro - Kiosco, Librería y Regalería" class="logo" style="height: 64px; margin-right: 16px;">
+            <div>
+                <h1>Comercio Multirubro "El Almacén de 6°G"</h1>
+                <p class="subtitulo-header">Kiosco · Librería · Regalería</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <!-- Indicador de página activa -->
+                <li><a href="index.html" class="activo">Inicio</a></li>
+                <li><a href="gestion.html">Gestión</a></li>
+                <li><a href="ventas.html">Ventas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Presentación del comercio -->
+        <section class="presentacion">
+            <h2>Bienvenidos a nuestro sistema de stock</h2>
+            <p>Administrá el inventario de los tres rubros del comercio: <strong>Kiosco</strong>, <strong>Librería</strong> y <strong>Regalería</strong>.</p>
+
+            <!-- Tarjetas de rubros con logos locales usando flexbox -->
+            <div class="rubros-grid">
+                <div class="rubro-card">
+                    <!-- Icono rubro kiosco -->
+                    <img src="icono-kiosco.svg" alt="Icono Kiosco" title="Sección Kiosco" style="width:48px; height:48px;">
+                    <h3>Kiosco</h3>
+                    <p>Golosinas, bebidas y snacks.</p>
+                </div>
+                <div class="rubro-card">
+                    <!-- Icono rubro librería -->
+                    <img src="icono-libreria.svg" alt="Icono Librería" title="Sección Librería" style="width:48px; height:48px;">
+                    <h3>Librería</h3>
+                    <p>Útiles escolares y de oficina.</p>
+                </div>
+                <div class="rubro-card">
+                    <!-- Icono rubro regalería -->
+                    <img src="icono-regaleria.svg" alt="Icono Regalería" title="Sección Regalería" style="width:48px; height:48px;">
+                    <h3>Regalería</h3>
+                    <p>Regalos, decoración y souvenirs.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabla de productos destacados por rubro (5 por rubro) -->
+        <section>
+            <h2>Productos Destacados — Kiosco</h2>
+            <table class="tabla-stock">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alfajor Triple</td>
+                        <td>$1.200</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>Gaseosa 500ml</td>
+                        <td>$1.800</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Chicles Beldent</td>
+                        <td>$600</td>
+                        <td class="alerta">4</td>
+                    </tr>
+                    <tr>
+                        <td>Papas Fritas 55g</td>
+                        <td>$950</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>Caramelos surtidos (bolsa)</td>
+                        <td>$500</td>
+                        <td class="alerta">3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Productos Destacados — Librería</h2>
+            <table class="tabla-stock">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cuaderno A4 Tapa Dura</td>
+                        <td>$2.500</td>
+                        <td class="alerta">2</td>
+                    </tr>
+                    <tr>
+                        <td>Lapicera Azul BIC</td>
+                        <td>$500</td>
+                        <td>80</td>
+                    </tr>
+                    <tr>
+                        <td>Resma A4 500 hojas</td>
+                        <td>$8.000</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>Marcador Permanente</td>
+                        <td>$1.100</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>Tijera Escolar</td>
+                        <td>$900</td>
+                        <td>20</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Productos Destacados — Regalería</h2>
+            <table class="tabla-stock">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Taza Personalizada</td>
+                        <td>$5.500</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>Marco de Fotos 10x15</td>
+                        <td>$3.200</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Vela Decorativa</td>
+                        <td>$2.000</td>
+                        <td class="alerta">3</td>
+                    </tr>
+                    <tr>
+                        <td>Caja de Regalo Grande</td>
+                        <td>$1.500</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>Peluche 30cm</td>
+                        <td>$7.000</td>
+                        <td>6</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Accesos directos a otras páginas -->
+        <section class="accesos">
+            <h2>Accesos Rápidos</h2>
+            <div class="accesos-flex">
+                <a href="gestion.html" class="btn-acceso" title="Ir a la página de gestión de productos">➕ Gestionar Productos</a>
+                <a href="ventas.html" class="btn-acceso" title="Ir al registro de ventas y transacciones">📋 Ver Ventas</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Comercio Multirubro "6°G" — <a href="mailto:soporte@comercio.com">Soporte Técnico</a></p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas - Gestión de Stock</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <img src="logo.svg" alt="Logo Comercio Multirubro" title="Comercio Multirubro - Kiosco, Librería y Regalería" class="logo" style="height: 64px; margin-right: 16px;">
+            <div>
+                <h1>Comercio Multirubro "El Almacén de 6°G"</h1>
+                <p class="subtitulo-header">Kiosco · Librería · Regalería</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="gestion.html">Gestión</a></li>
+                <!-- Página activa destacada para orientar al usuario -->
+                <li><a href="ventas.html" class="activo">Ventas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Migas de pan para ubicación dentro del sitio -->
+        <nav class="breadcrumbs" aria-label="Ruta de navegación">
+            <p>Inicio &gt; <strong>Ventas</strong></p>
+        </nav>
+
+        <!-- Resumen rápido usando flexbox -->
+        <section class="resumen-ventas">
+            <h2>Resumen del Mes</h2>
+            <div class="stats-flex">
+                <div class="stat-card">
+                    <span class="stat-numero">$47.300</span>
+                    <span class="stat-label">Total Vendido</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-numero">12</span>
+                    <span class="stat-label">Transacciones</span>
+                </div>
+                <div class="stat-card alerta-card">
+                    <span class="stat-numero">3</span>
+                    <span class="stat-label">Pagos Pendientes</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabla de transacciones registradas -->
+        <section>
+            <h2>Registro de Transacciones</h2>
+            <p>Historial de ventas realizadas en el comercio.</p>
+            <table class="tabla-stock">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Producto</th>
+                        <th>Rubro</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2024-05-12</td>
+                        <td>Lapicera Azul BIC</td>
+                        <td>Librería</td>
+                        <td>10</td>
+                        <td>$5.000</td>
+                    </tr>
+                    <tr>
+                        <td>2024-05-13</td>
+                        <td>Alfajor Triple</td>
+                        <td>Kiosco</td>
+                        <td>5</td>
+                        <td>$6.000</td>
+                    </tr>
+                    <tr>
+                        <td>2024-05-14</td>
+                        <td>Taza Personalizada</td>
+                        <td>Regalería</td>
+                        <td>2</td>
+                        <td>$11.000</td>
+                    </tr>
+                    <tr>
+                        <td>2024-05-15</td>
+                        <td>Resma A4 500 hojas</td>
+                        <td>Librería</td>
+                        <td>3</td>
+                        <td>$24.000</td>
+                    </tr>
+                    <tr>
+                        <td>2024-05-16</td>
+                        <td>Gaseosa 500ml</td>
+                        <td>Kiosco</td>
+                        <td>6</td>
+                        <td>$10.800</td>
+                    </tr>
+                    <tr>
+                        <td>2024-05-17</td>
+                        <td>Marco de Fotos 10x15</td>
+                        <td>Regalería</td>
+                        <td>1</td>
+                        <td>$3.200</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <!-- Sección de pagos a cuenta con lista ficticia -->
+        <section id="pagos-cuenta">
+            <h2>Pagos a Cuenta</h2>
+            <p>Clientes con saldo pendiente de pago.</p>
+            <!-- Lista usada para claridad visual en datos estructurados -->
+            <ul class="lista-ficticia">
+                <li>
+                    <strong>Juan Pérez</strong>
+                    <span class="deuda">Debe $2.000</span>
+                    <span class="vencimiento">Vence: 15/06/2024</span>
+                </li>
+                <li>
+                    <strong>Ana Gómez</strong>
+                    <span class="deuda">Debe $1.500</span>
+                    <span class="vencimiento">Vence: 20/06/2024</span>
+                </li>
+                <li>
+                    <strong>Carlos Ruiz</strong>
+                    <span class="deuda">Debe $4.800</span>
+                    <span class="vencimiento">Vence: 01/07/2024</span>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Comercio Multirubro "6°G" — <a href="mailto:soporte@comercio.com">Soporte Técnico</a></p>
+    </footer>
+
+</body>
+</html>
